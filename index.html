@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5af19, #f12711);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #f12711;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #f5af19;
+        }
+        .utc-time {
+            font-size: 14px;
+            color: gray;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .card {
+                width: 80%;
+                padding: 15px;
+            }
+            .social-links a {
+                font-size: 14px;
+                margin: 0 8px;
+            }
+            .utc-time {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .card {
+                width: 90%;
+                padding: 10px;
+            }
+            .social-links a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            .utc-time {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="image.jpg" alt="Profile Picture" data-testid="profilePicture">
+        <h2 data-testid="fullName">Jerahmeel Princewill</h2>
+        <h4 data-testid="jobTitle">Frontend Developer</h4>
+        <p data-testid="shortBio">Passionate about building accessible and responsive web applications</p>
+        <p data-testid="currentLocation">Jos, Nigeria</p>
+        <p data-testid="emailAddress">jamicojerahmeel@gmail.com</p>
+        <div class="social-links" data-testid="socialLinks">
+            <a href="https://www.linkedin.com/in/jerahmeel-princewill-51b1b930a/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/jerahmeel200" target="_blank">GitHub</a>
+            <a href="https://x.com/JerahmeelJamico" target="_blank">Twitter</a>
+        </div>
+        <p class="utc-time" data-testid="currentTimeUTC"></p>
+    </div>
+
+    <script>
+        function updateTime() {
+            const utcTimeElement = document.querySelector("[data-testid='currentTimeUTC']");
+            const now = new Date();
+            utcTimeElement.textContent = "UTC Time: " + now.toISOString().split(".")[0] + "Z";
+        }
+        updateTime();
+    </script>
+</body>
+</html>
